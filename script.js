@@ -1,10 +1,11 @@
-/* global createCanvas, colorMode, HSB, background, rect, ellipse, width, height, noStroke,fill, */
-let score;
+/* global createCanvas, colorMode, HSB, background, rect, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5*/
+let score, combo;
 let testNote;
 function setup() {
   createCanvas(800, 600);
   colorMode(HSB, 360, 100, 100);
   score= 0;
+  combo=0;
 }
 
 function draw() {
@@ -15,7 +16,9 @@ function draw() {
   rect(width - 750, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
   let testNote = new note("LightSalmon");
+  testNote.move();
   testNote.show();
+  
 }
 
 class note{
@@ -24,11 +27,15 @@ class note{
     this.y=height/2;
     this.size=75;
     this.color=color;
+    this.velocity=random(1,9)
   }
   show(){
     noStroke();
     fill(this.color);
     ellipse(this.x, this.y, this.size);
+  }
+  move(){
+    this.x-= this.velocity;
   }
 }
 
