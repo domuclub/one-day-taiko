@@ -16,9 +16,9 @@ function draw() {
   rect(width - 750, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
   let testNote = new note("LightSalmon");
-  testNote.move();
-  testNote.show();
   
+  testNote.show();
+  testNote.move();
 }
 
 class note{
@@ -27,7 +27,7 @@ class note{
     this.y=height/2;
     this.size=75;
     this.color=color;
-    this.velocity=random(1,9)
+    this.velocity=10
   }
   show(){
     noStroke();
@@ -35,7 +35,10 @@ class note{
     ellipse(this.x, this.y, this.size);
   }
   move(){
-    this.x-= this.velocity;
+    while (this.x>width-800){
+      this.x-= this.velocity;
+    }
+    
   }
 }
 
