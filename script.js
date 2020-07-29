@@ -44,3 +44,5 @@ class note{
 //3. multiplayer functionality
 //4. updated graphics
 //5. multiple songs
+
+//add in gameStartMode, gameStartPanel, playerDesignMode, playerDesignMode, gameOverMode, gameOverpanel.
