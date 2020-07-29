@@ -57,7 +57,8 @@ class note {
 }
 
 function keyPressed(){
-  
+  if ````````
+  clap.play();
 }
 
 // 1. graphical mockup
