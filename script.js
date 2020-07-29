@@ -1,13 +1,14 @@
 /* global createCanvas, colorMode, HSB, background, rect, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
-let score, combo, x1;
+let score, combo;
 let testNote;
 let beatMap =[];
+let canScore;
 function setup() {
   createCanvas(800, 600);
   colorMode(HSB, 360, 100, 100);
   score = 0;
   combo = 0;
-  let testNote = new note("LightSalmon");
+  beatMap.push(new note("LightSalmon"))
 }
 
 function draw() {
@@ -18,8 +19,15 @@ function draw() {
   rect(width - 750, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
   
-  // testNote.move();
-  testNote.show();
+  if frameCount % 100 =
+  for (let i= 0; i<beatMap.length;i++){
+    beatMap[i].show();
+    beatMap[i].move();
+    if (beatMap[i].x>width-725 && beatMap[i].x<width-625){
+      stroke(0);
+      canScore = true;
+    }
+  }
   
 }
 
