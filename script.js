@@ -1,12 +1,13 @@
 /* global createCanvas, colorMode, HSB, background, rect, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, x1;
 let testNote;
+let beatMap =[];
 function setup() {
   createCanvas(800, 600);
   colorMode(HSB, 360, 100, 100);
   score = 0;
   combo = 0;
-  
+  let testNote = new note("LightSalmon");
 }
 
 function draw() {
@@ -16,8 +17,8 @@ function draw() {
   fill("LightGoldenRodYellow");
   rect(width - 750, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
-  let testNote = new note("LightSalmon");
-  testNote.move();
+  
+  // testNote.move();
   testNote.show();
   
 }
@@ -28,7 +29,7 @@ class note {
     this.y = height / 2;
     this.size = 75;
     this.color = color;
-    this.velocity = 10;
+    this.velocity = 1;
   }
   show() {
     noStroke();
@@ -36,7 +37,7 @@ class note {
     ellipse(this.x, this.y, this.size);
   }
   move() {
-    translate(-this.velocity,0)
+    this.x-=this.velocity
   }
 }
 
