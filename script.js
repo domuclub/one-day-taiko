@@ -1,4 +1,4 @@
-/* global createCanvas, colorMode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
+/* global createCanvas, colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, clap;
 let testNote;
 let beatMap =[];
@@ -14,7 +14,6 @@ function setup() {
   score = 0;
   combo = 0;
   
-  beatMap.push(new note("#F94827"))
 }
 
 function draw() {
@@ -24,13 +23,16 @@ function draw() {
   fill("LightGoldenRodYellow");
   rect(width - 750, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
+   rect(75,300,80)
   if (frameCount % 100 == 0){
-    beatMap.push(new note("#F94827"))
+    beatMap.push(new note("r",6))
+    beatMap.push(new note("t",8))
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
     if (beatMap[i].x>-300 && beatMap[i].x<900){
+      rect()
       canScore = true;
     }
     else canScore = false;
@@ -41,14 +43,27 @@ function draw() {
 }
 
 class note {
-  constructor(color) {
+  constructor(color,v) {
+    if (color=="t"){
     this.x = width - 80;
     this.y = height / 2;
-    this.size = 75;
-    this.color = color;
-    this.velocity = 5;
+    this.size = 65;
+    this.color = "#5DC0BC";
+    this.velocity = v;
+    } 
+    else if (color=="r"){
+      this.x = width - 80;
+    this.y = height / 2;
+    this.size = 65;
+    this.color = "#F94827";
+    this.velocity = v;
+    }
+    
   }
   show() {
+    stroke(0)
+    fill(255)
+    ellipse(this.x, this.y, this.size*1.25);
     noStroke();
     fill(this.color);
     ellipse(this.x, this.y, this.size);
@@ -61,10 +76,13 @@ class note {
 function keyPressed(){
   if (keyCode== "90" || keyCode == "88" ||keyCode == "78" ||keyCode == "77" ){
     clap.play();
-    combo+=1
+    if (canScore){
+      combo+=1
     score+=100*combo;
+    }
+      
   //fill("#F94827")
-    arc(479, 300, 280, 280, PI, TWO_PI);
+   // arc(479, 300, 280, 280, PI, TWO_PI);
   console.log(beatMap[0].x)
   } else {
     combo = 0;}
