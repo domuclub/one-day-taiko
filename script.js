@@ -3,7 +3,7 @@ let score, combo, clap;
 let testNote;
 let beatMap =[];
 let canScore;
-
+// turq #5DC0BC
 function preload(){
   clap = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fclap.mp3?v=1596051047665")
 }
@@ -20,7 +20,7 @@ function setup() {
 function draw() {
   background(95);
   strokeWeight(10);
-  stroke("LightCoral");
+  stroke("black");
   fill("LightGoldenRodYellow");
   rect(width - 750, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
@@ -30,7 +30,7 @@ function draw() {
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
-    if (beatMap[i].x>50 && beatMap[i].x<500){
+    if (beatMap[i].x>-300 && beatMap[i].x<900){
       canScore = true;
     }
     else canScore = false;
@@ -59,14 +59,12 @@ class note {
 }
 
 function keyPressed(){
-  if (keyCode== "90"){
-    fill()
-    arc(479, 300, 280, 280, PI, TWO_PI);
-  }
-  if (canScore){
+  if (keyCode== "90" || keyCode == "88" ||keyCode == "78" ||keyCode == "77" ){
     clap.play();
     combo+=1
     score+=100*combo;
+  //fill("#F94827")
+    arc(479, 300, 280, 280, PI, TWO_PI);
   console.log(beatMap[0].x)
   } else {
     combo = 0;}
