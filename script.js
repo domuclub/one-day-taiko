@@ -73,8 +73,8 @@ class note {
     noFill()
     stroke(0)
     strokeWeight(5)
-    arc(this.x-10, this.y+13, this.size*.25, this.size*.25,TWO_PI , 3*PI/4);
-    arc(this.x+10, this.y+13, this.size*.25, this.size*.25,TWO_PI , PI);
+    arc(this.x-9, this.y+13, this.size*.25, this.size*.25,TWO_PI , PI);
+    arc(this.x+9, this.y+13, this.size*.25, this.size*.25,TWO_PI , PI);
     
   }
   move() {
