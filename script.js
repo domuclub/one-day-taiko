@@ -30,10 +30,10 @@ function draw() {
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
-    if (beatMap[i].x>width-725 && beatMap[i].x<width-625){
-      stroke(0);
+    if (beatMap[i].x>width-725 && beatMap[i].x<width-325){
       canScore = true;
     }
+    else canScore = false;
   }
   
 }
@@ -57,8 +57,9 @@ class note {
 }
 
 function keyPressed(){
-  if (canScore){
+  if (canScore ){
     clap.play();
+    
   }
  
 }
