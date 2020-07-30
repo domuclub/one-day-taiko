@@ -30,7 +30,7 @@ function draw() {
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
-    if (beatMap[i].x>width-725 && beatMap[i].x<width-325){
+    if (beatMap[i].x>50 && beatMap[i].x<500){
       canScore = true;
     }
     else canScore = false;
@@ -63,10 +63,9 @@ function keyPressed(){
     clap.play();
     combo+=1
     score+=100*combo;
-  console.log(beatMap.x)
-  }
-  // } else {
-  //   combo = 0;}
+  console.log(beatMap[0].x)
+  } else {
+    combo = 0;}
  
 }
 
