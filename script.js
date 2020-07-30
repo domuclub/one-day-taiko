@@ -1,4 +1,4 @@
-/* global createCanvas, colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
+/* global createCanvas, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, clap;
 let testNote;
 let beatMap =[];
@@ -18,7 +18,7 @@ function setup() {
 
 function draw() {
   background(95);
-  strokeWeight(10);
+  strokeWeight(6);
   stroke("black");
   fill("LightGoldenRodYellow");
   rect(width - 750, height / 2 - 40, 700, 80);
@@ -62,11 +62,20 @@ class note {
   }
   show() {
     stroke(0)
-    fill(255)
+    fill("#F9F1E9")
     ellipse(this.x, this.y, this.size*1.25);
     noStroke();
     fill(this.color);
     ellipse(this.x, this.y, this.size);
+    fill(0)
+    ellipse(this.x-17, this.y, this.size*.25);
+    ellipse(this.x+17, this.y, this.size*.25);
+    noFill()
+    stroke(0)
+    strokeWeight(5)
+    arc(this.x-10, this.y+13, this.size*.25, this.size*.25,TWO_PI , 3*PI/4);
+    arc(this.x+10, this.y+13, this.size*.25, this.size*.25,TWO_PI , PI);
+    
   }
   move() {
     this.x-=this.velocity
