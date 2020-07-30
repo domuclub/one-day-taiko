@@ -1,4 +1,4 @@
-/* global createCanvas, colorMode, HSB, background, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
+/* global createCanvas, colorMode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, clap;
 let testNote;
 let beatMap =[];
@@ -35,6 +35,8 @@ function draw() {
     }
     else canScore = false;
   }
+  text(score,20,20);
+  text(combo,20,40);
   
 }
 
@@ -59,8 +61,12 @@ class note {
 function keyPressed(){
   if (canScore ){
     clap.play();
-    
+    combo+=1
+    score+=100*combo;
+  console.log(beatMap.x)
   }
+  // } else {
+  //   combo = 0;}
  
 }
 
