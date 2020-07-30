@@ -14,7 +14,7 @@ function setup() {
   score = 0;
   combo = 0;
   
-  beatMap.push(new note("LightSalmon"))
+  beatMap.push(new note("#F94827"))
 }
 
 function draw() {
@@ -25,7 +25,7 @@ function draw() {
   rect(width - 750, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
   if (frameCount % 100 == 0){
-    beatMap.push(new note("LightSalmon"))
+    beatMap.push(new note("#F94827"))
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
@@ -59,7 +59,11 @@ class note {
 }
 
 function keyPressed(){
-  if (canScore ){
+  if (keyCode== "90"){
+    fill()
+    arc(479, 300, 280, 280, PI, TWO_PI);
+  }
+  if (canScore){
     clap.play();
     combo+=1
     score+=100*combo;
