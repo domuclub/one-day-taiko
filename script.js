@@ -57,8 +57,10 @@ class note {
 }
 
 function keyPressed(){
-  if ````````
-  clap.play();
+  if (canScore){
+    clap.play();
+  }
+ 
 }
 
 // 1. graphical mockup
