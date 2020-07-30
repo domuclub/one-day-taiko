@@ -37,6 +37,7 @@ function draw() {
     }
     else canScore = false;
   }
+  fill("#F9F1E9")
   text(score,20,20);
   text(combo,20,40);
   
@@ -73,9 +74,8 @@ class note {
     noFill()
     stroke(0)
     strokeWeight(5)
-    arc(this.x-9, this.y+13, this.size*.25, this.size*.25,TWO_PI , PI);
-    arc(this.x+9, this.y+13, this.size*.25, this.size*.25,TWO_PI , PI);
-    
+    arc(this.x-9, this.y+10, this.size*.25, this.size*.25,TWO_PI , 3*PI/4);
+    arc(this.x+9, this.y+10, this.size*.25, this.size*.25,PI/4 , PI);
   }
   move() {
     this.x-=this.velocity
