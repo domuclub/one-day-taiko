@@ -32,7 +32,11 @@ function draw() {
   ellipse(width - 725, height / 2, 100);
   // if(song.isPlaying()){
     
-      beatMap.push(new note(noteMap[i],beatVelocity[i]))
+//       beatMap.push(new note(noteMap[i],beatVelocity[i]))
+//   }
+   if (frameCount % 100 == 0){
+    beatMap.push(new note("r",6))
+    beatMap.push(new note("t",8))
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
@@ -100,6 +104,7 @@ function keyPressed(){
   } 
   else if (keyCode == "78" ||keyCode == "77"){
     ka.play();
+    rect(90,90,90,90)
     if (canScore){
       combo+=1
     score+=100*combo;
