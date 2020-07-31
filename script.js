@@ -3,6 +3,8 @@ let score, combo, don, ka, song, font, songEnded;
 let upperBG, lowerBG, float, donchan;
 let testNote, redNote, blueNote;
 let beatMap = []
+let letterC;
+let triggerExplosion;
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[1,2,3,4,5,6,7,8,9,10]
 let canScore;
@@ -72,16 +74,29 @@ function draw() {
   ellipse(310,300, 90)
   stroke(0);
   strokeWeight(6);
-  
+  if (frameCount%100==0){
+    let ranint = random(0,1)
+    if (ranint> .5){
+      letterC = "r"
+    } else {letterC= "t" }
+    let otherRan = (2,10)
+    beatMap.push(new note(letterC,otherRan))
+  }
                  
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
     if (beatMap[i].x>265 && beatMap[i].x<355){
       canScore = true;
-    }
-    if (beatMap[i].)
-    else canScore = false;
+    }  else canScore = false;
+    if (beatMap[i].color == "#F94827"){
+      redNote=true
+    } else {redNote = false}
+    
+    if (beatMap[i].color == "#5DC0BC"){
+      blueNote=true
+    } else {blueNote = false}
+   
   }
     fill("#FB4729")
    rect(3, height / 2 - 60, 250, 120);
@@ -140,6 +155,9 @@ class note {
   move() {
     this.x-=this.velocity
   }
+  explode(){
+    this.x
+  }
 }
 
 function keyPressed(){
@@ -153,6 +171,8 @@ function keyPressed(){
     if (canScore && redNote){
       combo+=1
     score+=100*combo;
+      triggerExplosion = true;
+      
     }
     else {
     combo = 0;
@@ -170,6 +190,7 @@ function keyPressed(){
     if (canScore && blueNote){
       combo+=1
     score+=100*combo;
+    triggerExplosion = true;
     }
     else {
     combo = 0;
