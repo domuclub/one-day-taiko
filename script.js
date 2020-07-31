@@ -57,8 +57,17 @@ function draw() {
   strokeWeight(6);
   stroke(0);
     fill("#2C2A2C");
-  rect(0, height / 2 - 40, 797, 100);
+  rect(0, height / 2 - 60, 797, 120);
   fill("#545254")
+  noFill()
+  strokeWeight(3)
+  stroke("#626162")
+  ellipse(310,300, 62.5)
+  noStroke()
+  fill("#545254")
+  ellipse)()
+  stroke(0);
+  strokeWeight(6);
   // if(song.isPlaying()){
     //#F9F1E9 cream
 //       beatMap.push(new note(noteMap[i],beatVelocity[i]))
@@ -88,7 +97,7 @@ function draw() {
   rect(0,240,140,45,10)
   fill(255)
   text(score,10,275);
-  if (combo>0){
+  if (combo>9){
   text(combo,183,310); 
   }
   
@@ -98,15 +107,15 @@ function draw() {
 class note {
   constructor(color,v) {
     if (color=="t"){
-    this.x = width - 80;
-    this.y = (height / 2) +10;
+    this.x = width;
+    this.y = (height / 2);
     this.size = 50;
     this.color = "#5DC0BC";
     this.velocity = v;
     } 
     else if (color=="r"){
       this.x = width;
-    this.y = (height / 2) +10;
+    this.y = (height / 2);
     this.size = 50;
     this.color = "#F94827";
     this.velocity = v;
