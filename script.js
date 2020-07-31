@@ -1,7 +1,8 @@
 /* global createCanvas, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, don, ka, font;
 let testNote;
-let beatMap =[];
+let beatMap =["t","r","t","r","t","r","t","r","t","r"];
+let beatVelocity=[1,2,3,4,5,6,7,8,9,10,20]
 let canScore;
 // turq #5DC0BC
 function preload(){
@@ -23,14 +24,14 @@ function setup() {
 function draw() {
   background(95);
   strokeWeight(6);
-  stroke("black");
+  stroke(0);
   fill("LightGoldenRodYellow");
-  rect(width - 750, height / 2 - 40, 700, 80);
+  rect(0, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
    rect(75,300,80)
-  if (frameCount % 100 == 0){
-    beatMap.push(new note("r",6))
-    beatMap.push(new note("t",8))
+  if (frameCount % 80 == 0){
+    beatMap.push(new note("r",1.5))
+    beatMap.push(new note("t",20))
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
@@ -99,7 +100,7 @@ function keyPressed(){
   } 
   else if (keyCode == "78" ||keyCode == "77"){
     ka.play();
-    if (canScore && beatMap.note[].){
+    if (canScore){
       combo+=1
     score+=100*combo;
     }
