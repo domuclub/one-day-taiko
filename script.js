@@ -36,7 +36,7 @@ function draw() {
     beatMap[i].show();
     beatMap[i].move();
     if (beatMap[i].x>-300 && beatMap[i].x<900){
-      rect()
+      rect(90,90,90,90)
       canScore = true;
     }
     else canScore = false;
@@ -87,18 +87,26 @@ class note {
 }
 
 function keyPressed(){
-  if (keyCode== "90" || keyCode == "88" ||keyCode == "78" ||keyCode == "77" ){
+  if (keyCode== "90" || keyCode == "88"){
     don.play();
     if (canScore){
       combo+=1
     score+=100*combo;
     }
-      
-  //fill("#F94827")
-   // arc(479, 300, 280, 280, PI, TWO_PI);
-  console.log(beatMap[0].x)
-  } else {
-    combo = 0;}
+    else {
+    combo = 0;
+    }
+  } 
+  else if (keyCode == "78" ||keyCode == "77"){
+    ka.play();
+    if (canScore && beatMap.note[].){
+      combo+=1
+    score+=100*combo;
+    }
+    else {
+    combo = 0;
+    }
+  }
  
 }
 
