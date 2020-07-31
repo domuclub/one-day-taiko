@@ -3,8 +3,7 @@ let score, combo, don, ka, song, font, songEnded;
 let testNote;
 let beatMap= [];
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
-let beatVelocity=[1,2,1,2,1,2,1,2,1,2,20]
-
+let beatVelocity=[20]
 let canScore;
 // turq #5DC0BC
 function preload(){
@@ -21,6 +20,7 @@ function setup() {
   combo = 0;
   textSize(30);
   textFont(font);
+  song.play();
 }
 
 function draw() {
@@ -28,9 +28,8 @@ function draw() {
   strokeWeight(6);
   stroke(0);
   fill("LightGoldenRodYellow");
-  rect(0, height / 2 - 40, 700, 80);
+  rect(5, height / 2 - 40, 790, 100);
   ellipse(width - 725, height / 2, 100);
-   rect(75,300,80)
   if(song.isPlaying()){
     let i=0;
       beatMap.push(new note(noteMap[i],beatVelocity[i]))
@@ -56,14 +55,14 @@ class note {
     if (color=="t"){
     this.x = width - 80;
     this.y = height / 2;
-    this.size = 65;
+    this.size = 50;
     this.color = "#5DC0BC";
     this.velocity = v;
     } 
     else if (color=="r"){
       this.x = width - 80;
     this.y = height / 2;
-    this.size = 65;
+    this.size = 50;
     this.color = "#F94827";
     this.velocity = v;
     }
@@ -82,11 +81,14 @@ class note {
     noFill()
     stroke(0)
     strokeWeight(5)
-    arc(this.x-9, this.y+10, this.size*.25, this.size*.25,TWO_PI , 3*PI/4);
-    arc(this.x+9, this.y+10, this.size*.25, this.size*.25,PI/4 , PI);
+    arc(this.x-7, this.y+10, this.size*.25, this.size*.25,TWO_PI , 3*PI/4);
+    arc(this.x+7, this.y+10, this.size*.25, this.size*.25,PI/4 , PI);
   }
   move() {
     this.x-=this.velocity
+    if (keyPressed()){
+      noLoop()
+    }
   }
 }
 
@@ -113,14 +115,6 @@ function keyPressed(){
  
 }
   
-  function mouseClicked(){
-    if (!song.isPlaying()){
-      song.play();
-      console.log(mouseClicked())
-    } else {song.stop();
-           }
-  
-  }
 // 1. graphical mockup
 //2. functional note system
 //3. multiplayer functionality
