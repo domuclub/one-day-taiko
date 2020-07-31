@@ -1,4 +1,4 @@
-/* global createCanvas,noFill, textSize, loadImage, image, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
+/* global createCanvas,noFill, textSize, OPEN, loadImage, image, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, don, ka, song, font, songEnded;
 let upperBG, lowerBG, float, donchan;
 let testNote;
@@ -6,7 +6,7 @@ let beatMap= [];
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[20]
 let canScore;
-let drumLeft, drumRight;
+let drumLeft, drumRight, rimLeft, rimRight;
 let  x1 = 0;
 let x2;
 let scrollSpeed = 2;
@@ -33,6 +33,10 @@ function setup() {
   combo = 0;
   textSize(30);
   textFont(font);
+  drumLeft = "#FAEFE3"
+  drumRight = "#FAEFE3"
+  rimRight = 0
+  rimLeft = 0
   song.play();
 }
 
@@ -71,10 +75,13 @@ function draw() {
   }
     fill("#FB4729")
    rect(3, height / 2 - 60, 250, 120);
-  fill("#FAEFE3")
-  arc(width - 605, height / 2, 100, PI, -PI);
-  fill("")
-  arc(width - 605, height / 2, 100, PI, -PI);
+  stroke(rimLeft)
+  fill(drumLeft)
+  arc(200, 300, 80, 80, PI/2, 3*PI/2, OPEN);
+  fill(drumRight)
+  stroke(rimRight)
+  arc(200, 300, 80, 80, 3*PI/2,PI/2 , OPEN);
+  stroke(0)
   fill(0)
   rect(0,240,140,45,10)
   fill(255)
@@ -95,7 +102,7 @@ class note {
     this.velocity = v;
     } 
     else if (color=="r"){
-      this.x = width - 80;
+      this.x = width;
     this.y = (height / 2) +10;
     this.size = 50;
     this.color = "#F94827";
@@ -125,8 +132,11 @@ class note {
 }
 
 function keyPressed(){
-  if (keyCode== "90" || keyCode == "88"){
+  
+  
+  if (keyCode== "78" || keyCode == "88"){
     don.play();
+    
     if (canScore){
       combo+=1
     score+=100*combo;
@@ -135,7 +145,7 @@ function keyPressed(){
     combo = 0;
     }
   } 
-  else if (keyCode == "78" ||keyCode == "77"){
+  else if (keyCode == "90" ||keyCode == "77"){
     ka.play();
     rect(90,90,90,90)
     if (canScore){
