@@ -87,12 +87,16 @@ function draw() {
   }
                  
   for (let i= 0; i<beatMap.length;i++){
-    beatMap[i].move();
+   
     beatMap[i].show();
-    if (triggerExplosion){
-        beatMap[i].explode()
-      
-             }
+    if (!triggerExplosion){
+         beatMap[i].move();
+        }else {
+          beatMap[i].explode()
+          if (beatMap[i].y<-50){
+            triggerExplosion=false;
+          } else triggerExplosion = true;
+        }
   
     
     if (beatMap[i].x>265 && beatMap[i].x<355){
@@ -131,7 +135,6 @@ class note {
   constructor(color,v,big) {
     this.x = width;
     this.y = (height / 2);
-    this.size = 50;
     this.velocity = v;
     if (color=="t"){
     this.color = "#5DC0BC";
@@ -140,7 +143,9 @@ class note {
     this.color = "#F94827";
     }
     if (big == true){
-      
+     this.size = 72
+    } else{
+      this.size = 50
     }
     
   }
@@ -164,8 +169,11 @@ class note {
     this.x-=this.velocity
   }
   explode(){
-    this.x += this.velocity
-    this.y += this.velocity
+    if (this.x>300){
+      this.color == "FFE638"
+    }
+    this.x += this.velocity*2
+    this.y -= this.velocity*2
   }
 }
 
