@@ -180,8 +180,8 @@ class note {
   }
   explode(){
     if (triggerExplosion){
-      this.x+=this.velocity*2
-    this.y-=this.velocity*2
+      this.x+=this.velocity*8
+    this.y-=this.velocity*7
     }
     
   }
@@ -193,6 +193,7 @@ function keyPressed(){
       combo+=1
     score+=200*combo;
       shownScore = "+" + 200*combo 
+      triggerExplosion= true
     }
     else {
     combo = 0;
@@ -203,6 +204,7 @@ function keyPressed(){
       combo+=1
     score+=200*combo;
        shownScore = "+" + 200*combo 
+       triggerExplosion= true
     }
     else {
     combo = 0;
@@ -220,6 +222,7 @@ function keyPressed(){
       combo+=1
     score+=100*combo;
       shownScore = "+" + 100*combo 
+      triggerExplosion= true
     }
     else {
     combo = 0;
@@ -238,6 +241,7 @@ function keyPressed(){
       combo+=1
     score+=100*combo;
       shownScore = "+" + 100*combo 
+      triggerExplosion= true
     } 
     else {
     combo = 0;
@@ -248,23 +252,22 @@ function keyReleased(){
   if (keyCode == "78"){
       drumRight = "#FAEFE3"
     shownScore =" "
-      if (canScore){triggerExplosion= true}
-    } 
+     triggerExplosion= false
+    }
   else if (keyCode == "88"){
     drumLeft = "#FAEFE3"
     shownScore =" "
-    if (canScore){triggerExplosion= true}
+    triggerExplosion= false
   }
     else if (keyCode == "90"){
     rimLeft= 0
       shownScore =" "
-      if (canScore){triggerExplosion= true}
+      triggerExplosion= false
     }
   else if (keyCode == "77"){
     rimRight = 0
     shownScore =" "
-    if (canScore){triggerExplosion= true}
-    
+    triggerExplosion= false
   }
   }  
 
@@ -273,6 +276,6 @@ function keyReleased(){
 //2. functional note system
 //3. multiplayer functionality
 //4. updated graphics
-//5. multiple song (canScore){}s
+//5. multiple songs
 
 //add in gameStartMode, gameStartPanel, playerDesignMode, playerDesignMode, gameOverMode, gameOverpanel.
