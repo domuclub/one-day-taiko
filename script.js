@@ -1,9 +1,10 @@
 /* global createCanvas,textSize, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
-let score, combo, don, ka, font;
+let score, combo, don, ka, font, isStarted;
 let testNote;
 let beatMap= [];
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[1,2,1,2,1,2,1,2,1,2,20]
+let startText = " ";
 
 let canScore;
 // turq #5DC0BC
@@ -20,7 +21,7 @@ function setup() {
   combo = 0;
   textSize(30);
   textFont(font);
-  
+  isStarted = false;
 }
 
 function draw() {
@@ -31,11 +32,11 @@ function draw() {
   rect(0, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
    rect(75,300,80)
-  while( )){
-    for (let i=0; i<noteMap.length;i++){
-      beatMap.push(new note(noteMap[i],beatVelocity[i]))
-    }
-  }
+  // while( ){
+  //   for (let i=0; i<noteMap.length;i++){
+  //     beatMap.push(new note(noteMap[i],beatVelocity[i]))
+  //   }
+  // }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
@@ -48,6 +49,15 @@ function draw() {
   fill("#F9F1E9")
   text(score,20,20);
   text(combo,20,40);
+  text(startText, 20,20)
+  
+  if (isStarted){
+    noLoop()
+    startText = "Click to start!"
+  } else {
+    startText = " "
+    loop()
+  }
   
 }
 
