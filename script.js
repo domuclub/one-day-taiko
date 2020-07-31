@@ -38,8 +38,9 @@ function setup() {
 
 function draw() {
   upperBG.resize(width, 1/2*height)
-  image(upperBG, x1, 0, width,  1/2*height);
+  image(upperBG, x1, 0, width, 1/2*height);
   image(upperBG, x2, 0, width, 1/2*height);
+  image(donchan,70,93,150,150)
    x1 -= scrollSpeed;
   x2 -= scrollSpeed;
   if (x1 < -width){
@@ -50,11 +51,11 @@ function draw() {
   }
   strokeWeight(6);
   stroke(0);
-    fill("gray");
+    fill("#2C2A2C");
   rect(0, height / 2 - 40, 797, 100);
-  fill("brown")
+  fill("#FB4729")
    rect(3, height / 2 - 60, 250, 120);
-  fill("#F9F1E9")
+  fill("#FAEFE3")
   ellipse(width - 610, height / 2, 100);
   // if(song.isPlaying()){
     //#F9F1E9 cream
