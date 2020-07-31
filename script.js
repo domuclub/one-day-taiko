@@ -5,6 +5,7 @@ let testNote, redNote, blueNote, bigRedNote, bigBlueNote;
 let beatMap = []
 let letterC;
 let big;
+let shownScore =" ";
 let triggerExplosion;
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[1,2,3,4,5,6,7,8,9,10]
@@ -134,6 +135,7 @@ function draw() {
   if (combo>9){
   text(combo,183,310); 
   }
+  text(shownScore, 350, 250)
   
   
 }
@@ -182,6 +184,7 @@ function keyPressed(){
     if (canScore && bigRedNote){
       combo+=1
     score+=200*combo;
+      shownScore = "+" + 200*combo 
     }
     else {
     combo = 0;
@@ -191,6 +194,7 @@ function keyPressed(){
      if (canScore && bigBlueNote){
       combo+=1
     score+=200*combo;
+       shownScore = "+" + 200*combo 
     }
     else {
     combo = 0;
@@ -207,6 +211,7 @@ function keyPressed(){
     if (canScore && redNote){
       combo+=1
     score+=100*combo;
+      shownScore = "+" + 100*combo 
     }
     else {
     combo = 0;
@@ -224,10 +229,8 @@ function keyPressed(){
     if (canScore && blueNote){
       combo+=1
     score+=100*combo;
-    } else if (canScore && bigBlueNote){
-      combo+=1
-    score+=200*combo;
-    }
+      shownScore = "+" + 100*combo 
+    } 
     else {
     combo = 0;
     }
@@ -236,15 +239,19 @@ function keyPressed(){
 function keyReleased(){
   if (keyCode == "78"){
       drumRight = "#FAEFE3"
+    shownScore =" "
     } 
   else if (keyCode == "88"){
     drumLeft = "#FAEFE3"
+    shownScore =" "
   }
     else if (keyCode == "90"){
     rimLeft= 0
+      shownScore =" "
     }
   else if (keyCode == "77"){
     rimRight = 0
+    shownScore =" "
   }
   }  
 
