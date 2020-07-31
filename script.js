@@ -81,7 +81,7 @@ function draw() {
       letterC = "r"
     } else {letterC= "t" }
     let ranint2 = random(0,1)
-    if (ranint2 > .1){
+    if (ranint2 < .1){
       big = true
     } else {big = false}
     beatMap.push(new note(letterC,10,big))
@@ -92,10 +92,10 @@ function draw() {
     beatMap[i].show();
     if (triggerExplosion){
          beatMap[i].explode()
-          if (beatMap[i].y<-100){
+    }
+    if (beatMap[i].y<-100){
             triggerExplosion=false;
-          } 
-        }
+    }
     
     
   console.log(triggerExplosion)
