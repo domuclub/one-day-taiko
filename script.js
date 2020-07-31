@@ -16,7 +16,7 @@ function preload(){
   upperBG = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fuppersongbg.png?v=1596167283001")
   lowerBG = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fsongbg.png?v=1596167296333")
   float = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdancer.png?v=1596167278229")
-  donchan = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdancing-don.gif?v=1596167280481")
+  donchan = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdonchan.gif?v=1596172023209")
   song = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Foffenbach.mp3?v=1596163284914")
   don = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdon.wav?v=1596154130922")
   ka = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fka.wav?v=1596154128574")
@@ -44,7 +44,7 @@ function draw() {
   upperBG.resize(width, 1/2*height)
   image(upperBG, x1, 0, width, 1/2*height);
   image(upperBG, x2, 0, width, 1/2*height);
-  image(donchan,70,93,150,150)
+  image(donchan,95,120)
    x1 -= scrollSpeed;
   x2 -= scrollSpeed;
   if (x1 < -width){
@@ -58,6 +58,7 @@ function draw() {
   stroke(0);
     fill("#2C2A2C");
   rect(0, height / 2 - 40, 797, 100);
+  fill("#545254")
   // if(song.isPlaying()){
     //#F9F1E9 cream
 //       beatMap.push(new note(noteMap[i],beatVelocity[i]))
@@ -134,31 +135,30 @@ class note {
 }
 
 function keyPressed(){
-  else if (keyCode == "88"){
+  if (keyCode== "78" || keyCode == "88"){
+    if (keyCode == "78"){
+      drumRight = "#F94827"
+    } else if (keyCode == "88"){
     drumLeft = "#F94827"
   }
-    else if (keyCode == "90"){
+    don.play();
+    if (canScore){
+      combo+=1
+    score+=100*combo;
+    }
+    else {
+    combo = 0;
+    }
+    
+  } 
+  else if (keyCode == "90" ||keyCode == "77"){
+     if (keyCode == "90"){
     rimLeft= "#5DC0BC"
     }
   else if (keyCode == "77"){
     rimRight = "#5DC0BC"
   }
-  }
-  if (keyCode== "78" || keyCode == "88"){
-    don.play();
-    
-    
-    if (canScore){
-      combo+=1
-    score+=100*combo;
-    }
-    else {
-    combo = 0;
-    }
-  } 
-  else if (keyCode == "90" ||keyCode == "77"){
     ka.play();
-    rect(90,90,90,90)
     if (canScore){
       combo+=1
     score+=100*combo;
@@ -166,7 +166,7 @@ function keyPressed(){
     else {
     combo = 0;
     }
- 
+  }
 }
 function keyReleased(){
   if (keyCode == "78"){
