@@ -76,7 +76,7 @@ function draw() {
   ellipse(310,300, 90)
   stroke(0);
   strokeWeight(6);
-  if (frameCount%100==0){
+  if (frameCount%80==0){
     let ranint = random(0,1)
     if (ranint> .5){
       letterC = "r"
@@ -91,6 +91,7 @@ function draw() {
   for (let i= 0; i<beatMap.length;i++){
    beatMap[i].move();
     beatMap[i].show();
+    beatMap[i].explode();
 
   
     
@@ -170,12 +171,19 @@ class note {
     ellipse(this.x+15, this.y, this.size*.25);
     noFill()
     stroke(0)
-    strokeWeight(5)
+    strokeWeight(4)
     arc(this.x-7, this.y+10, this.size*.25, this.size*.25,TWO_PI , 3*PI/4);
     arc(this.x+7, this.y+10, this.size*.25, this.size*.25,PI/4 , PI);
   }
   move() {
     this.x-=this.velocity
+  }
+  explode(){
+    if (triggerExplosion){
+      this.x+=this.velocity*2
+    this.y-=this.velocity*2
+    }
+    
   }
   }
 
@@ -240,18 +248,23 @@ function keyReleased(){
   if (keyCode == "78"){
       drumRight = "#FAEFE3"
     shownScore =" "
+      if (canScore){triggerExplosion= true}
     } 
   else if (keyCode == "88"){
     drumLeft = "#FAEFE3"
     shownScore =" "
+    if (canScore){triggerExplosion= true}
   }
     else if (keyCode == "90"){
     rimLeft= 0
       shownScore =" "
+      if (canScore){triggerExplosion= true}
     }
   else if (keyCode == "77"){
     rimRight = 0
     shownScore =" "
+    if (canScore){triggerExplosion= true}
+    
   }
   }  
 
@@ -260,6 +273,6 @@ function keyReleased(){
 //2. functional note system
 //3. multiplayer functionality
 //4. updated graphics
-//5. multiple songs
+//5. multiple song (canScore){}s
 
 //add in gameStartMode, gameStartPanel, playerDesignMode, playerDesignMode, gameOverMode, gameOverpanel.
