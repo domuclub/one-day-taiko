@@ -1,14 +1,19 @@
-/* global createCanvas,noFill, textSize, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
+/* global createCanvas,noFill, textSize, loadImage, image, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, don, ka, song, font, songEnded;
+let upperBG, lowerBG, float, donchan;
 let testNote;
 let beatMap= [];
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[20]
 let canScore;
 let drumLeft, drumRight;
+let  x1 = 0;
+let x2;
+let scrollSpeed = 2;
+
 // turq #5DC0BC
 function preload(){
-  upperBG = loadImage("")
+  upperBG = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fuppersongbg.png?v=1596167283001")
   lowerBG = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fsongbg.png?v=1596167296333")
   float = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdancer.png?v=1596167278229")
   donchan = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdancing-don.gif?v=1596167280481")
@@ -20,6 +25,9 @@ function preload(){
 
 function setup() {
   createCanvas(800, 600);
+  lowerBG.resize(width, 1/2*height);
+  image(lowerBG, 0, 300);
+  x2 = width;
   colorMode(HSB, 360, 100, 100);
   score = 0;
   combo = 0;
@@ -29,14 +37,23 @@ function setup() {
 }
 
 function draw() {
-  background(95);
-  
+  upperBG.resize(width, 1/2*height)
+  image(upperBG, x1, 0, width,  1/2*height);
+  image(upperBG, x2, 0, width, 1/2*height);
+   x1 -= scrollSpeed;
+  x2 -= scrollSpeed;
+  if (x1 < -width){
+    x1 = width;
+  }
+  if (x2 < -width){
+    x2 = width;
+  }
   strokeWeight(6);
   stroke(0);
     fill("gray");
-  rect(5, height / 2 - 40, 790, 100);
+  rect(0, height / 2 - 40, 797, 100);
   fill("brown")
-   rect(5, height / 2 - 60, 250, 120);
+   rect(3, height / 2 - 60, 250, 120);
   fill("#F9F1E9")
   ellipse(width - 610, height / 2, 100);
   // if(song.isPlaying()){
