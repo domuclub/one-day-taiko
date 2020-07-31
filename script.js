@@ -1,7 +1,7 @@
 /* global createCanvas,noFill, textSize, OPEN, loadImage, image, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, don, ka, song, font, songEnded;
 let upperBG, lowerBG, float, donchan;
-let testNote;
+let testNote, redNote, blueNote;
 let beatMap = []
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[1,2,3,4,5,6,7,8,9,10]
@@ -72,19 +72,15 @@ function draw() {
   ellipse(310,300, 90)
   stroke(0);
   strokeWeight(6);
-  // if(song.isPlaying()){
-    //#F9F1E9 cream
-//       beatMap.push(new note(noteMap[i],beatVelocity[i]))
-//   }
-  for (let i = 0; i< 10; i++){ 
-    beatMap.push(new note(noteMap[i],beatVelocity[i]))
-  }
+  
+                 
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
     if (beatMap[i].x>265 && beatMap[i].x<355){
       canScore = true;
     }
+    if (beatMap[i].)
     else canScore = false;
   }
     fill("#FB4729")
@@ -154,7 +150,7 @@ function keyPressed(){
     drumLeft = "#F94827"
   }
     don.play();
-    if (canScore){
+    if (canScore && redNote){
       combo+=1
     score+=100*combo;
     }
@@ -171,7 +167,7 @@ function keyPressed(){
     rimRight = "#5DC0BC"
   }
     ka.play();
-    if (canScore){
+    if (canScore && blueNote){
       combo+=1
     score+=100*combo;
     }
