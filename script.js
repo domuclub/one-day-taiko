@@ -1,11 +1,13 @@
-/* global createCanvas, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
-let score, combo, clap;
+/* global createCanvas, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
+let score, combo, don, ka, font;
 let testNote;
 let beatMap =[];
 let canScore;
 // turq #5DC0BC
 function preload(){
-  clap = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fclap.mp3?v=1596051047665")
+  don = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdon.wav?v=1596154130922")
+  ka = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fka.wav?v=1596154128574")
+  font = loadFont('https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Ftnt.ttf?v=1596153491049');
 }
 
 function setup() {
@@ -13,6 +15,8 @@ function setup() {
   colorMode(HSB, 360, 100, 100);
   score = 0;
   combo = 0;
+  textSize(30);
+  textFont(font);
   
 }
 
@@ -84,7 +88,7 @@ class note {
 
 function keyPressed(){
   if (keyCode== "90" || keyCode == "88" ||keyCode == "78" ||keyCode == "77" ){
-    clap.play();
+    don.play();
     if (canScore){
       combo+=1
     score+=100*combo;
