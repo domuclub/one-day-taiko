@@ -53,10 +53,6 @@ function draw() {
   stroke(0);
     fill("#2C2A2C");
   rect(0, height / 2 - 40, 797, 100);
-  fill("#FB4729")
-   rect(3, height / 2 - 60, 250, 120);
-  fill("#FAEFE3")
-  ellipse(width - 610, height / 2, 100);
   // if(song.isPlaying()){
     //#F9F1E9 cream
 //       beatMap.push(new note(noteMap[i],beatVelocity[i]))
@@ -73,9 +69,19 @@ function draw() {
     }
     else canScore = false;
   }
-  fill("#F9F1E9")
-  text(score,20,20);
-  text(combo,20,40);
+    fill("#FB4729")
+   rect(3, height / 2 - 60, 250, 120);
+  fill("#FAEFE3")
+  arc(width - 605, height / 2, 100, PI, -PI);
+  fill("")
+  arc(width - 605, height / 2, 100, PI, -PI);
+  fill(0)
+  rect(0,240,140,45,10)
+  fill(255)
+  text(score,10,275);
+  if (combo>0){
+  text(combo,183,310); 
+  }
   
 }
 
