@@ -8,6 +8,10 @@ let canScore;
 let drumLeft, drumRight;
 // turq #5DC0BC
 function preload(){
+  upperBG = loadImage("")
+  lowerBG = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fsongbg.png?v=1596167296333")
+  float = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdancer.png?v=1596167278229")
+  donchan = loadImage("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdancing-don.gif?v=1596167280481")
   song = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Foffenbach.mp3?v=1596163284914")
   don = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdon.wav?v=1596154130922")
   ka = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fka.wav?v=1596154128574")
@@ -26,6 +30,7 @@ function setup() {
 
 function draw() {
   background(95);
+  
   strokeWeight(6);
   stroke(0);
     fill("gray");
