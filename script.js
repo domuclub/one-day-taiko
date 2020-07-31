@@ -53,6 +53,7 @@ function draw() {
   if (x2 < -width){
     x2 = width;
   }
+  
   strokeWeight(6);
   stroke(0);
     fill("#2C2A2C");
@@ -89,6 +90,7 @@ function draw() {
   if (combo>0){
   text(combo,183,310); 
   }
+  
   
 }
 
@@ -132,10 +134,22 @@ class note {
 }
 
 function keyPressed(){
-  
-  
+  if (keyCode == "78"){
+      drumLeft = "#F94827"
+    } 
+  else if (keyCode == "88"){
+    drumRight = "#F94827"
+  }
+    else if (keyCode == "90"){
+    rimRight= "#5DC0BC"
+    }
+  else if (keyCode == "77"){
+    rimLeft = "#5DC0BC"
+  }
+  }
   if (keyCode== "78" || keyCode == "88"){
     don.play();
+    
     
     if (canScore){
       combo+=1
@@ -165,4 +179,3 @@ function keyPressed(){
 //5. multiple songs
 
 //add in gameStartMode, gameStartPanel, playerDesignMode, playerDesignMode, gameOverMode, gameOverpanel.
-}
