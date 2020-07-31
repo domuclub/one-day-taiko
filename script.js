@@ -61,11 +61,15 @@ function draw() {
   fill("#545254")
   noFill()
   strokeWeight(3)
-  stroke("#626162")
+  stroke("#747374")
   ellipse(310,300, 62.5)
   noStroke()
   fill("#545254")
-  ellipse)()
+  ellipse(310,300,50) 
+  noFill()
+  strokeWeight(3)
+  stroke("#606061")
+  ellipse(310,300, 90)
   stroke(0);
   strokeWeight(6);
   // if(song.isPlaying()){
@@ -74,12 +78,11 @@ function draw() {
 //   }
    if (frameCount % 100 == 0){
     beatMap.push(new note("r",6))
-    beatMap.push(new note("t",8))
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
-    if (beatMap[i].x>-300 && beatMap[i].x<900){
+    if (beatMap[i].x>265 && beatMap[i].x<355){
       canScore = true;
     }
     else canScore = false;
