@@ -1,5 +1,5 @@
 /* global createCanvas,textSize, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
-let score, combo, don, ka, font, isStarted;
+let score, combo, don, ka, font, songEnded, isStarted;
 let testNote;
 let beatMap= [];
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
@@ -32,11 +32,11 @@ function draw() {
   rect(0, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
    rect(75,300,80)
-  // while( ){
-  //   for (let i=0; i<noteMap.length;i++){
-  //     beatMap.push(new note(noteMap[i],beatVelocity[i]))
-  //   }
-  // }
+  while(songEnded == false){
+    for (let i=0; i<noteMap.length;i++){
+      beatMap.push(new note(noteMap[i],beatVelocity[i]))
+    }
+  }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
@@ -52,11 +52,11 @@ function draw() {
   text(startText, 20,20)
   
   if (isStarted){
-    noLoop()
-    startText = "Click to start!"
-  } else {
     startText = " "
     loop()
+  } else {
+    noLoop()
+    startText = "Click to start!"
   }
   
 }
