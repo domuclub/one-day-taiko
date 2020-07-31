@@ -27,19 +27,17 @@ function draw() {
   background(95);
   strokeWeight(6);
   stroke(0);
-  fill("LightGoldenRodYellow");
+    fill("gray");
   rect(5, height / 2 - 40, 790, 100);
   ellipse(width - 725, height / 2, 100);
-  if(song.isPlaying()){
-    let i=0;
+  // if(song.isPlaying()){
+    
       beatMap.push(new note(noteMap[i],beatVelocity[i]))
-    i++
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
     beatMap[i].move();
     if (beatMap[i].x>-300 && beatMap[i].x<900){
-      rect(90,90,90,90)
       canScore = true;
     }
     else canScore = false;
@@ -86,9 +84,6 @@ class note {
   }
   move() {
     this.x-=this.velocity
-    if (keyPressed()){
-      noLoop()
-    }
   }
 }
 
