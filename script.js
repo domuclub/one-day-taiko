@@ -134,17 +134,14 @@ class note {
 }
 
 function keyPressed(){
-  if (keyCode == "78"){
-      drumLeft = "#F94827"
-    } 
   else if (keyCode == "88"){
-    drumRight = "#F94827"
+    drumLeft = "#F94827"
   }
     else if (keyCode == "90"){
-    rimRight= "#5DC0BC"
+    rimLeft= "#5DC0BC"
     }
   else if (keyCode == "77"){
-    rimLeft = "#5DC0BC"
+    rimRight = "#5DC0BC"
   }
   }
   if (keyCode== "78" || keyCode == "88"){
@@ -171,7 +168,22 @@ function keyPressed(){
     }
  
 }
-  
+function keyReleased(){
+  if (keyCode == "78"){
+      drumRight = "#FAEFE3"
+    } 
+  else if (keyCode == "88"){
+    drumLeft = "#FAEFE3"
+  }
+    else if (keyCode == "90"){
+    rimLeft= 0
+    }
+  else if (keyCode == "77"){
+    rimRight = 0
+  }
+  }  
+
+
 // 1. graphical mockup
 //2. functional note system
 //3. multiplayer functionality
