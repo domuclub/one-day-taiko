@@ -4,6 +4,7 @@ let upperBG, lowerBG, float, donchan;
 let testNote, redNote, blueNote;
 let beatMap = []
 let letterC;
+let big;
 let triggerExplosion;
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[1,2,3,4,5,6,7,8,9,10]
@@ -79,13 +80,21 @@ function draw() {
     if (ranint> .5){
       letterC = "r"
     } else {letterC= "t" }
-    let otherRan = (2,10)
-    beatMap.push(new note(letterC,otherRan))
+    if (ranint < .1){
+      big = true
+    } else {big = false}
+    beatMap.push(new note(letterC,10))
   }
                  
   for (let i= 0; i<beatMap.length;i++){
-    beatMap[i].show();
     beatMap[i].move();
+    beatMap[i].show();
+    if (triggerExplosion){
+        beatMap[i].explode()
+      
+             }
+  
+    
     if (beatMap[i].x>265 && beatMap[i].x<355){
       canScore = true;
     }  else canScore = false;
@@ -119,20 +128,19 @@ function draw() {
 }
 
 class note {
-  constructor(color,v) {
-    if (color=="t"){
+  constructor(color,v,big) {
     this.x = width;
     this.y = (height / 2);
     this.size = 50;
-    this.color = "#5DC0BC";
     this.velocity = v;
+    if (color=="t"){
+    this.color = "#5DC0BC";
     } 
     else if (color=="r"){
-      this.x = width;
-    this.y = (height / 2);
-    this.size = 50;
     this.color = "#F94827";
-    this.velocity = v;
+    }
+    if (big == true){
+      
     }
     
   }
@@ -156,7 +164,8 @@ class note {
     this.x-=this.velocity
   }
   explode(){
-    this.x
+    this.x += this.velocity
+    this.y += this.velocity
   }
 }
 
