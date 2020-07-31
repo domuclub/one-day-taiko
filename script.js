@@ -1,7 +1,7 @@
 /* global createCanvas,noFill, textSize, OPEN, loadImage, image, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
 let score, combo, don, ka, song, font, songEnded;
 let upperBG, lowerBG, float, donchan;
-let testNote, redNote, blueNote;
+let testNote, redNote, blueNote, bigRedNote, bigBlueNote;
 let beatMap = []
 let letterC;
 let big;
@@ -80,10 +80,11 @@ function draw() {
     if (ranint> .5){
       letterC = "r"
     } else {letterC= "t" }
-    if (ranint < .1){
+    let ranint2 = random(0,1)
+    if (ranint2 > .1){
       big = true
     } else {big = false}
-    beatMap.push(new note(letterC,10))
+    beatMap.push(new note(letterC,10,big))
   }
                  
   for (let i= 0; i<beatMap.length;i++){
@@ -102,6 +103,18 @@ function draw() {
     if (beatMap[i].x>265 && beatMap[i].x<355){
       canScore = true;
     }  else canScore = false;
+    
+    if (beatMap[i].x>265 && beatMap[i].y>265 ){
+      combo = 0
+    }
+    
+    if (beatMap[i].color == "#F94827" && beatMap[i].size>51){
+      bigRedNote=true
+    } else {bigRedNote = false}
+    
+    if (beatMap[i].color == "#5DC0BC" && beatMap[i].size>51){
+      bigBlueNote=true
+    } else {bigBlueNote = false}
     if (beatMap[i].color == "#F94827"){
       redNote=true
     } else {redNote = false}
@@ -109,6 +122,9 @@ function draw() {
     if (beatMap[i].color == "#5DC0BC"){
       blueNote=true
     } else {blueNote = false}
+    
+    
+    
    
   }
     fill("#FB4729")
@@ -178,6 +194,7 @@ class note {
 }
 
 function keyPressed(){
+  
   if (keyCode== "78" || keyCode == "88"){
     if (keyCode == "78"){
       drumRight = "#F94827"
@@ -189,7 +206,10 @@ function keyPressed(){
       combo+=1
     score+=100*combo;
       triggerExplosion = true;
-      
+    } else if (canScore && bigRedNote){
+      combo+=.5
+    score+=200*combo;
+      triggerExplosion = true;
     }
     else {
     combo = 0;
@@ -208,6 +228,10 @@ function keyPressed(){
       combo+=1
     score+=100*combo;
     triggerExplosion = true;
+    } else if (canScore && bigBlueNote){
+      combo+=1
+    score+=200*combo;
+      triggerExplosion = true;
     }
     else {
     combo = 0;
