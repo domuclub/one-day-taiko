@@ -2,9 +2,9 @@
 let score, combo, don, ka, song, font, songEnded;
 let upperBG, lowerBG, float, donchan;
 let testNote;
-let beatMap= [];
+let beatMap = []
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
-let beatVelocity=[20]
+let beatVelocity=[1,2,3,4,5,6,7,8,9,10]
 let canScore;
 let drumLeft, drumRight, rimLeft, rimRight;
 let  x1 = 0;
@@ -76,8 +76,8 @@ function draw() {
     //#F9F1E9 cream
 //       beatMap.push(new note(noteMap[i],beatVelocity[i]))
 //   }
-   if (frameCount % 100 == 0){
-    beatMap.push(new note("r",6))
+  for (let i = 0; i< 10; i++){ 
+    beatMap.push(new note(noteMap[i],beatVelocity[i]))
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
