@@ -1,14 +1,14 @@
-/* global createCanvas,textSize, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
-let score, combo, don, ka, font, songEnded, isStarted;
+/* global createCanvas,noFill, textSize, textFont, loadFont, PI, TWO_PI, arc,colorMode, keyCode, HSB, background, text, loadSound, rect, frameCount, ellipse, width, height, noStroke,fill, random, stroke, strokeWeight, p5, translate*/
+let score, combo, don, ka, song, font, songEnded;
 let testNote;
 let beatMap= [];
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[1,2,1,2,1,2,1,2,1,2,20]
-let startText = " ";
 
 let canScore;
 // turq #5DC0BC
 function preload(){
+  song = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Foffenbach.mp3?v=1596163284914")
   don = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fdon.wav?v=1596154130922")
   ka = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Fka.wav?v=1596154128574")
   font = loadFont('https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Ftnt.ttf?v=1596153491049');
@@ -21,7 +21,7 @@ function setup() {
   combo = 0;
   textSize(30);
   textFont(font);
-  isStarted = false;
+  song.play();
 }
 
 function draw() {
@@ -32,7 +32,7 @@ function draw() {
   rect(0, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
    rect(75,300,80)
-  while(songEnded == false){
+  while(song.isPlaying()){
     for (let i=0; i<noteMap.length;i++){
       beatMap.push(new note(noteMap[i],beatVelocity[i]))
     }
@@ -49,15 +49,6 @@ function draw() {
   fill("#F9F1E9")
   text(score,20,20);
   text(combo,20,40);
-  text(startText, 20,20)
-  
-  if (isStarted){
-    startText = " "
-    loop()
-  } else {
-    noLoop()
-    startText = "Click to start!"
-  }
   
 }
 
@@ -120,10 +111,11 @@ function keyPressed(){
     else {
     combo = 0;
     }
-  }
+    if (keyCode == "78"){
+      arc(20,20,20,20, PI, -PI)
+    }
  
 }
-
 // 1. graphical mockup
 //2. functional note system
 //3. multiplayer functionality
@@ -131,3 +123,4 @@ function keyPressed(){
 //5. multiple songs
 
 //add in gameStartMode, gameStartPanel, playerDesignMode, playerDesignMode, gameOverMode, gameOverpanel.
+}
