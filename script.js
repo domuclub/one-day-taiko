@@ -90,23 +90,14 @@ function draw() {
   for (let i= 0; i<beatMap.length;i++){
    beatMap[i].move();
     beatMap[i].show();
-    if (triggerExplosion){
-         beatMap[i].explode()
-    }
-    if (beatMap[i].y<-100){
-            triggerExplosion=false;
-    }
-    
-    
-  console.log(triggerExplosion)
+
+  
     
     if (beatMap[i].x>265 && beatMap[i].x<355){
       canScore = true;
     }  else canScore = false;
     
-    if (beatMap[i].x>265 && beatMap[i].y>265 ){
-      combo = 0
-    }
+
     
     if (beatMap[i].color == "#F94827" && beatMap[i].size>51){
       bigRedNote=true
@@ -184,18 +175,13 @@ class note {
   move() {
     this.x-=this.velocity
   }
-  explode(){
-    this.x += this.velocity*2
-    this.y -= this.velocity*2
   }
-}
 
 function keyPressed(){
   if (keyCode== "78" && keyCode == "88"){
     if (canScore && bigRedNote){
       combo+=1
     score+=200*combo;
-      triggerExplosion = true;
     }
     else {
     combo = 0;
@@ -205,7 +191,6 @@ function keyPressed(){
      if (canScore && bigBlueNote){
       combo+=1
     score+=200*combo;
-      triggerExplosion = true;
     }
     else {
     combo = 0;
@@ -222,7 +207,6 @@ function keyPressed(){
     if (canScore && redNote){
       combo+=1
     score+=100*combo;
-      triggerExplosion = true;
     }
     else {
     combo = 0;
@@ -240,11 +224,9 @@ function keyPressed(){
     if (canScore && blueNote){
       combo+=1
     score+=100*combo;
-    triggerExplosion = true;
     } else if (canScore && bigBlueNote){
       combo+=1
     score+=200*combo;
-      triggerExplosion = true;
     }
     else {
     combo = 0;
