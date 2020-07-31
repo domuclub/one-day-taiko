@@ -92,7 +92,7 @@ function draw() {
     beatMap[i].show();
     if (triggerExplosion){
          beatMap[i].explode()
-          if (beatMap[i].y<-50){
+          if (beatMap[i].y<-100){
             triggerExplosion=false;
           } 
         }
