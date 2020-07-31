@@ -21,7 +21,6 @@ function setup() {
   combo = 0;
   textSize(30);
   textFont(font);
-  song.play();
 }
 
 function draw() {
@@ -32,10 +31,10 @@ function draw() {
   rect(0, height / 2 - 40, 700, 80);
   ellipse(width - 725, height / 2, 100);
    rect(75,300,80)
-  while(song.isPlaying()){
-    for (let i=0; i<noteMap.length;i++){
+  if(song.isPlaying()){
+    let i=0;
       beatMap.push(new note(noteMap[i],beatVelocity[i]))
-    }
+    i++
   }
   for (let i= 0; i<beatMap.length;i++){
     beatMap[i].show();
@@ -111,11 +110,17 @@ function keyPressed(){
     else {
     combo = 0;
     }
-    if (keyCode == "78"){
-      arc(20,20,20,20, PI, -PI)
-    }
  
 }
+  
+  function mouseClicked(){
+    if (!song.isPlaying()){
+      song.play();
+      console.log(mouseClicked())
+    } else {song.stop();
+           }
+  
+  }
 // 1. graphical mockup
 //2. functional note system
 //3. multiplayer functionality
