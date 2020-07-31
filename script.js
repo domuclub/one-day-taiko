@@ -5,6 +5,7 @@ let beatMap= [];
 let noteMap =["t","r","t","r","t","r","t","r","t","r"];
 let beatVelocity=[20]
 let canScore;
+let drumLeft, drumRight;
 // turq #5DC0BC
 function preload(){
   song = loadSound("https://cdn.glitch.com/c3a565ad-77ec-45ef-8bf4-72c2d38b11ba%2Foffenbach.mp3?v=1596163284914")
@@ -29,9 +30,12 @@ function draw() {
   stroke(0);
     fill("gray");
   rect(5, height / 2 - 40, 790, 100);
-  ellipse(width - 725, height / 2, 100);
+  fill("brown")
+   rect(5, height / 2 - 60, 250, 120);
+  fill("#F9F1E9")
+  ellipse(width - 610, height / 2, 100);
   // if(song.isPlaying()){
-    
+    //#F9F1E9 cream
 //       beatMap.push(new note(noteMap[i],beatVelocity[i]))
 //   }
    if (frameCount % 100 == 0){
@@ -56,14 +60,14 @@ class note {
   constructor(color,v) {
     if (color=="t"){
     this.x = width - 80;
-    this.y = height / 2;
+    this.y = (height / 2) +10;
     this.size = 50;
     this.color = "#5DC0BC";
     this.velocity = v;
     } 
     else if (color=="r"){
       this.x = width - 80;
-    this.y = height / 2;
+    this.y = (height / 2) +10;
     this.size = 50;
     this.color = "#F94827";
     this.velocity = v;
@@ -78,8 +82,8 @@ class note {
     fill(this.color);
     ellipse(this.x, this.y, this.size);
     fill(0)
-    ellipse(this.x-17, this.y, this.size*.25);
-    ellipse(this.x+17, this.y, this.size*.25);
+    ellipse(this.x-15, this.y, this.size*.25);
+    ellipse(this.x+15, this.y, this.size*.25);
     noFill()
     stroke(0)
     strokeWeight(5)
